@@ -20,7 +20,7 @@ const ImageContainer = ({
         handleRequestOpen();
     }
     return (
-        <div className="relative">
+        <div className="relative border-2">
             <Image alt="" width={600} height={0} src={source}></Image>
             <div className="h-[60px] absolute bottom-0 flex w-full justify-between px-4 pb-4">
                 <Button
