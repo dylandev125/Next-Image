@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { toast } from "react-toastify";
 import Button from "./button";
 
 interface EditorTypes {
@@ -66,6 +67,7 @@ const ImageEditor = ({
       const url = URL.createObjectURL(blob);
       onChangeImage(source, url);
       handleClose();
+      toast('Image change saved', { hideProgressBar: true, autoClose: 2000, type: 'success' })
     }, "image/png");
     
   };
