@@ -21,7 +21,7 @@ const ImageContainer = ({
     }
     return (
         <div className="relative">
-            <Image alt="" width={600} height={960} src={source}></Image>
+            <Image alt="" width={600} height={0} src={source}></Image>
             <div className="h-[60px] absolute bottom-0 flex w-full justify-between px-4 pb-4">
                 <Button
                     className="bg-lime-800 text-white hover:bg-[white] border hover:border-lime-800 hover:text-black"

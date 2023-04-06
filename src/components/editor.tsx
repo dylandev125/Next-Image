@@ -8,7 +8,12 @@ interface EditorTypes {
   onChangeImage: (source: string, url: string) => void;
 }
 
-const ImageEditor = ({ source, open, onChangeImage }: EditorTypes) => {
+const ImageEditor = ({
+  source,
+  open,
+  onChangeImage,
+  handleClose
+}: EditorTypes) => {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [imageInfo, setImageInfo] = useState<any>({ width: 1, height: 1 });
@@ -60,16 +65,17 @@ const ImageEditor = ({ source, open, onChangeImage }: EditorTypes) => {
     canvas.toBlob((blob: Blob) => {
       const url = URL.createObjectURL(blob);
       onChangeImage(source, url);
+      handleClose();
     }, "image/png");
+    
   };
 
-  console.log(imageInfo);
   return (
     <>
       <div
         className={`${
           open ? "block" : "hidden"
-        } md:h-[calc(100%-150px)] md:w-auto w-[80%] h-auto fixed top-[50%] left-[50%] bottom-auto !-translate-x-[50%] !-translate-y-[50%] -mr-[50%] z-50`}
+        } md:h-[calc(100%-150px)] md:w-auto w-[80%] h-auto fixed top-[50%] left-[50%] bottom-auto !-translate-x-[50%] !-translate-y-[50%] -mr-[50%] z-50 border-2 border-lime-800`}
         style={{ aspectRatio: `${imageInfo.width / imageInfo.height}` }}
       >
         <canvas
@@ -80,7 +86,7 @@ const ImageEditor = ({ source, open, onChangeImage }: EditorTypes) => {
           onMouseMove={draw}
         />
         <Button
-          className="bg-[#2b2dbd] text-white text-xl font-bold border border-[#2b2dbd] hover:bg-white hover:text-[#2b2dbd] absolute bottom-0"
+          className="bg-[#2b2dbd] text-white text-xl font-bold border border-[#2b2dbd] hover:bg-white hover:text-[#2b2dbd] absolute right-0 -top-0 animate-bounce"
           onClick={onClickSave}
         >
           Save

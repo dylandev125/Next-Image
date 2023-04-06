@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { trpc } from "@/utils/trpc";
 import ImageContainer from "@/components/imageContainer";
 import ImageEditor from "@/components/editor";
