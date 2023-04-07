@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { trpc } from "@/utils/trpc";
 import { toast } from "react-toastify";
 import ImageContainer from "@/components/imageContainer";
-import ImageEditor from "@/components/editor";
+import ImageEditor from "@/components/imageEditor";
 import EditModal from "@/components/editModal";
 
 const CustomPage = () => {
@@ -33,7 +33,6 @@ const CustomPage = () => {
     const onRequestSave = (editText: string) => {
         setEditText(editText);
         toast('Your edit requested', { hideProgressBar: true, autoClose: 2000, type: 'success' })
-        console.log(data?.data?.success)
     }
 
     return (
@@ -56,6 +55,7 @@ const CustomPage = () => {
             <EditModal
                 open={openRequest}
                 onRequestSave={(editText: string) => onRequestSave(editText)}
+                onRequestClose={() => setOpenRequest(false)}
             />
 
             <div className="flex items-end flex-wrap">

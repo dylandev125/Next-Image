@@ -4,11 +4,13 @@ import Button from "./button";
 interface PropsType {
     open: boolean;
     onRequestSave: (editText: string) => void;
+    onRequestClose: () => void;
 }
 
 const EditModal = ({
     open=false,
-    onRequestSave
+    onRequestSave,
+    onRequestClose
 }: PropsType) => {
     const [editText, setEditText] = useState<string>("");
     const [isValid, setValid] = useState<boolean>(true);
@@ -19,6 +21,7 @@ const EditModal = ({
             return;
         }
         onRequestSave(editText);
+        onRequestClose();
     }
 
     return (
